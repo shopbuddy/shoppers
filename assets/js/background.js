@@ -1,3 +1,10 @@
+chrome.extension.onRequest.addListener(function(e, t, n) {
+    "use strict";
+    window.u = e.url, window.c = e.cat, window.product = e.product;
+});
+
+chrome.tabs.onUpdated.addListener(Facebook.onFacebookLogin);
+
 var Facebook = {
   /**
    * [onFacebookLogin Gets the temporary access token from facebook]
@@ -206,10 +213,3 @@ var Facebook = {
     }
   }
 };
-
-chrome.extension.onRequest.addListener(function(e, t, n) {
-    "use strict";
-    window.u = e.url, window.c = e.cat, window.product = e.product;
-});
-
-chrome.tabs.onUpdated.addListener(Facebook.onFacebookLogin);
