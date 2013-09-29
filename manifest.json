@@ -1,0 +1,41 @@
+{
+	"name":"Shop Buddy",
+	"version":"1.0",
+
+	"description":"The Only Social Shopping App",
+
+	"browser_action":{
+		"default_icon":"img/icon16.png",
+		"default_title":"Shop Buddy",
+		"default_popup":"popup.html"
+	},
+
+	"background":
+	{
+		"scripts":["lib/jquery.js","assets/js/background.js"],
+		"persistent": true
+	},
+
+	"manifest_version": 2,
+
+	"content_security_policy":"script-src 'self';object-src 'self';connect-src https://graph.facebook.com/ https://www.googleapis.com/",
+
+	"permissions":["tabs","unlimitedStorage","http://www.flipkart.com/*","https://graph.facebook.com/*","https://*.facebook.com/*","http://*.facebook.com/*"],
+
+	"icons":
+	{
+		"16":"assets/img/icon16.png",
+		"48":"assets/img/icon48.png",
+		"128":"assets/img/icon128.png"
+	},
+
+
+	"content_scripts":[
+	{
+		"matches":["http://www.flipkart.com/*"],
+		"js": ["lib/jquery.js","assets/js/inject.js"],
+		"run_at":"document_end"
+	}
+	]
+}
+
