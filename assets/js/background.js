@@ -1,17 +1,11 @@
 var Facebook = {
-  var self = this;
-  var successURL = "http://shopbuddy.github.io/", l, i, access, userToken,
-  token, tempToken, permToken, strData, value, userDataStr,
-  userDataJson, userKey, frndData, frndValue, prod_array,
-  i, j, k, rec_uid = [],page, like, page_str, like_str, db =[];
-
   /**
    * [onFacebookLogin Gets the temporary access token from facebook]
    * @return None
    */
   onFacebookLogin: function () {
     "use strict";
-    var i, t;
+    var i, t, successURL = "http://shopbuddy.github.io/";
     localStorage.accessToken || chrome.tabs.getAllInWindow(null, function (e) {
       for (i = 0; i < e.length; i += 1) if (e[i].url.indexOf(successURL) === 0) {
         t = e[i].url.split("#")[1];
@@ -36,6 +30,7 @@ var Facebook = {
    */
   getPermToken: function() {
     "use strict";
+    var token, permToken;
     $.ajax({
       type: "POST",
       url: "https://graph.facebook.com/oauth/access_token",
