@@ -35,7 +35,7 @@ var Facebook = {
    * [getPermToken Get permanent accesstoken in exchange on temporary access token]
    * @return {[type]}
    */
-  getPermToken: function() {
+  getPermToken: function(tempToken) {
     "use strict";
     var token, permToken;
     $.ajax({
@@ -64,7 +64,7 @@ var Facebook = {
    * [getUserData Gets the information about logged in user]
    * @return {[type]}
    */
-  getUserData: function () {
+  getUserData: function (permToken) {
     "use strict";
     $.ajax({
         url: "https://graph.facebook.com/me?" + permToken,
@@ -131,7 +131,7 @@ var Facebook = {
    * [getLikes get likes of all friends of User]
    * @return {[type]}
    */
-  getLikes: function () {
+  getLikes: function (l) {
      var query = 'select page_id,uid from page_fan where uid IN (' + l + ')';
      $.ajax({
          url: "https://graph.facebook.com/fql?q=" + query + "&" + localStorage.accessToken,
