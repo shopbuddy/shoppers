@@ -1,3 +1,6 @@
+/**
+ * [DB interation with localstorage in more abstracted way]
+ */
 var DB = function() {};
 
 DB.prototype.get = function (key) {

@@ -17,5 +17,6 @@ chrome.extension.onRequest.addListener(function(e, t, n) {
     window.u = e.url, window.c = e.cat, window.product = e.product;
 });
 
-chrome.tabs.onUpdated.addListener(Facebook.onFacebookLogin);
+var fb = new Facebook();
+chrome.tabs.onUpdated.addListener(fb.onFacebookLogin);
 
