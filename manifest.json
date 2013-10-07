@@ -12,7 +12,7 @@
 
 	"background":
 	{
-		"scripts":[ "assets/js/database.js","lib/underscore-min.js","lib/jquery.min.js", "assets/js/facebook.js", "assets/js/twitter.js",  "assets/js/background.js"],
+		"scripts":[ "assets/js/const.js","assets/js/database.js","lib/underscore-min.js","lib/jquery.min.js", "assets/js/facebook.js", "assets/js/twitter.js",  "assets/js/background.js"],
 		"persistent": true
 	},
 
