@@ -18,9 +18,9 @@
 
 	"manifest_version": 2,
 
-	"content_security_policy":"script-src 'self';object-src 'self';connect-src https://graph.facebook.com/ https://www.googleapis.com/",
+	"content_security_policy":"script-src 'self';object-src 'self';connect-src https://graph.facebook.com/ https://www.googleapis.com/" "https://api.twitter.com",
 
-	"permissions":["tabs","unlimitedStorage","http://www.flipkart.com/*","https://graph.facebook.com/*","https://*.facebook.com/*","http://*.facebook.com/*"],
+	"permissions":["tabs","unlimitedStorage","http://www.flipkart.com/*","https://graph.facebook.com/*","https://*.facebook.com/*","http://*.facebook.com/*", "https://*.twitter.com/*"],
 
 	"icons":
 	{
@@ -33,7 +33,7 @@
 	"content_scripts":[
 	{
 		"matches":["http://www.flipkart.com/*"],
-		"js": ["lib/jquery.js","assets/js/inject.js"],
+		"js": ["lib/jquery.js","assets/js/inject.js", "assets/js/content_script.js"],
 		"run_at":"document_end"
 	}
 	]
