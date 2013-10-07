@@ -33,7 +33,7 @@
 	"content_scripts":[
 	{
 		"matches":["http://www.flipkart.com/*"],
-		"js": ["lib/jquery.min.js","assets/js/inject.js", "assets/js/content_script.js"],
+		"js": ["lib/jquery.min.js", "assets/js/content_script.js"],
 		"run_at":"document_end"
 	}
 	]
