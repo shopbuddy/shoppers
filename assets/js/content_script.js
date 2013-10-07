@@ -12,13 +12,17 @@ if (pinElement !== null && document.referrer.match(/oauth_consumer_key=([^&]+)/)
   }
 }
 
-
-var temp = $("[itemprop=title]")[1], anot = $('[class="basestore"]'), cat, prod = $('[itemprop=name]').text();
+//Query these dom elements from Flipkart
+var temp = $("[itemprop=title]")[1], 
+    anot = $('[class="basestore"]'), 
+    category,
+    prod = $('[itemprop=name]').text();
 
 if (temp) {
-    cat = temp.innerText;
+  cat = temp.innerText;
 } else {
-    cat = anot.text();
+  cat = anot.text();
 }
-chrome.extension.sendRequest({ url: document.URL, cat: cat, product: prod});
+
+chrome.extension.sendRequest({ url: document.URL, cat: category, product: prod});
 
