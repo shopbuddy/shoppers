@@ -20,7 +20,7 @@ var bg = chrome.extension.getBackgroundPage(),
     w, 
     E, 
     T,
-    N;
+    N;  
 
 $("#enter").click(function(){
   localStorage.removeItem("rec_uid");
