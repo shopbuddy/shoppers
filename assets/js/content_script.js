@@ -23,6 +23,6 @@ if (temp) {
 } else {
   cat = anot.text();
 }
-
+  
 chrome.extension.sendRequest({ url: document.URL, cat: category, product: prod});
 

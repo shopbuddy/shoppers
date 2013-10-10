@@ -1,5 +1,4 @@
 var Facebook = function() {};
-var db = new DB();
 /**
  * [onFacebookLogin Gets the temporary access token from facebook]
  * @return None
@@ -31,8 +30,8 @@ Facebook.prototype.getPermToken =  function(tempToken) {
     url: "https://graph.facebook.com/oauth/access_token",
     data: {
       grant_type: "fb_exchange_token",
-      client_id: "590299534315777",
-      client_secret: "570e62fb5579c948d670138301646822",
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
       fb_exchange_token: tempToken
     },
     success: function(e) {

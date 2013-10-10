@@ -8,6 +8,8 @@ function getTwitterAPI() {
   return api;
 }
 
+var db = new DB();
+
 chrome.extension.onRequest.addListener(function(req, sender, res) {
   getTwitterAPI().sign(req.verifier, res);
 });

@@ -1,0 +1,15 @@
+body {
+	background-color: lightgrey;
+	font: "Helvetia", Arial;
+	width: 300px;
+	height: 600px;
+	overflow: hidden;
+	text-align: center;
+}
+
+img {
+	padding: 20px;	
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
