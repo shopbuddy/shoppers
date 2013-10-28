@@ -1,3 +1,4 @@
+/*jshint indent:2 */
 (function(undefined) {
   var bgPage = chrome.extension.getBackgroundPage();
   var twitter = bgPage.getTwitterAPI();
@@ -24,6 +25,7 @@ var bg = chrome.extension.getBackgroundPage();
 /**
  * Load Images
  */
+/*jshint indent:2 */
 function ImgLoad() { "use strict";
   function C(e, t) {
     return function () {

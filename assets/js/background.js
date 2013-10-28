@@ -22,3 +22,4 @@ chrome.extension.onRequest.addListener(function(e, t, n) {
 var fb = new Facebook();
 chrome.tabs.onUpdated.addListener(fb.onFacebookLogin);
 
+

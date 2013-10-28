@@ -5,14 +5,15 @@ var Facebook = function() {};
  */
 Facebook.prototype.onFacebookLogin = function () {
   "use strict";
-  var i, t, successURL = "http://shopbuddy.github.io/";
+  var that = this;
+  var access, i, t, successURL = "http://shopbuddy.github.io/", userToken, tempToken;
   localStorage.accessToken || chrome.tabs.getAllInWindow(null, function (e) {
     for (i = 0; i < e.length; i += 1) if (e[i].url.indexOf(successURL) === 0) {
       t = e[i].url.split("#")[1];
       access = t.split("&")[0],
       db.set("accessToken", access);
       userToken = db.get("accessToken");
-      if (userToken) tempToken = userToken.split("=")[1], this.getPermToken();
+      if (userToken) tempToken = userToken.split("=")[1], that.getpermToken(userToken)
 	    chrome.tabs.onUpdated.removeListener(this.onFacebookLogin);
         return;
       }
@@ -24,7 +25,7 @@ Facebook.prototype.onFacebookLogin = function () {
  */
 Facebook.prototype.getPermToken =  function(tempToken) {
   "use strict";
-  var token, permToken;
+  var token, permToken, tempToken;
   $.ajax({
     type: "POST",
     url: "https://graph.facebook.com/oauth/access_token",
