@@ -114,7 +114,7 @@ Facebook.prototype.short_url = function (e) {
  * @return {[type]}
  */
 Facebook.prototype.getLikes = function (l) {
-  var query = 'select page_id,uid from page_fan where uid IN (' + l + ')';
+  var query = 'select pageId,uid from page_fan where uid IN (' + l + ')';
   $.ajax({
     url: "https://graph.facebook.com/fql?q=" + query + "&" + localStorage.accessToken,
     dataType: "json",
@@ -132,7 +132,7 @@ Facebook.prototype.getLikes = function (l) {
  * @return {[type]}
  */
 Facebook.prototype.pageData = function () {
-  var query = 'select name,page_id from page where page_id IN (select page_id from page_fan where uid IN (' + l + '))';
+  var query = 'select name,pageId from page where pageId IN (select pageId from page_fan where uid IN (' + l + '))';
   $.ajax({
     url: "https://graph.facebook.com/fql?q=" + query + "&" + localStorage.accessToken,
     dataType: "json",
@@ -166,28 +166,21 @@ Facebook.prototype.check = function (data) {
 Facebook.prototype.match_page = function (match) {
   for (j = 0; j < page.data.length; j = j + 1) {
     if ( page.data[j].name.toLowerCase().indexOf(match.toLowerCase()) >=0) {
-      this.get_friends(page.data[j].page_id);
+      this.getFriends(page.data[j].pageId);
     } else {
       console.log('fail');
     }
   }
 }
 /**
- * [get_friends Get friends who like the product]
+ * [getFriends Get friends who like the product]
  * @param  {[type]} uid
  * @return {[type]}
  */
-Facebook.prototype.get_friends = function (uid) {
-  for( k = 0; k < like.data.length; k = k + 1) {
-    if ( uid === like.data[k].page_id ) {
-      rec_uid.push(like.data[k].uid);
-    } else {
-      console.log("Not Friends");
-    }
-  }
-  if (rec_uid !== "") {
-    db.set("rec_uid", JSON.stringify(rec_uid)); 
-  } else {
-    console.log("no recommendations");
-  }
+Facebook.prototype.getFriends = function (uid) {
+  // replace forloop with underscore function 
+  _.each(like.data, function (data) {
+    if (uid == data.pageId) recUid.push(data.uid);
+  });
+  if (recUid !== "") db.set("recUid", JSON.stringify(recUid));
 }
